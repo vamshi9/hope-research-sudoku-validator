@@ -1,0 +1,25 @@
+{
+  "name": "hope-research",
+  "version": "1.0.0",
+  "description": "interview",
+  "main": "sudoku_validation.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vamshi9/hope-research.git"
+  },
+  "author": "vamshi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vamshi9/hope-research/issues"
+  },
+  "homepage": "https://github.com/vamshi9/hope-research#readme",
+  "dependencies": {
+    "mathjs": "^5.1.2"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
