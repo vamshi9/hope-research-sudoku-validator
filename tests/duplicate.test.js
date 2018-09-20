@@ -1,0 +1,93 @@
+const validSudoku = require('../sudoku_validation');
+
+test('should return false for duplicate in row', async () => {
+    const result = await validSudoku([
+        [5,3,4, 4,7,8, 9,1,2],
+        [6,7,2, 1,9,5, 3,4,8],
+        [1,9,8, 3,4,2, 5,6,7],
+
+        [8,5,9, 7,6,1, 4,2,3],
+        [4,2,6, 8,5,3, 7,9,1],
+        [7,1,3, 9,2,4, 8,5,6],
+
+        [9,6,1, 5,3,7, 2,8,4],
+        [2,8,7, 4,1,9, 6,3,5],
+        [3,4,5, 2,8,6, 1,7,9]
+    ]);
+    expect(result).toBe(false);
+});
+
+test('should return false for duplicate in column', async () => {
+    const result = await validSudoku([
+        [5,3,4, 6,7,8, 9,1,2],
+        [6,7,2, 1,9,5, 3,4,8],
+        [1,9,8, 3,4,2, 5,6,7],
+
+        [8,5,4, 7,6,1, 4,2,3],
+        [4,2,6, 8,5,3, 7,9,1],
+        [7,1,3, 9,2,4, 8,5,6],
+
+        [9,6,1, 5,3,7, 2,8,4],
+        [2,8,7, 4,1,9, 6,3,5],
+        [3,4,5, 2,8,6, 1,7,9]
+    ]);
+    expect(result).toBe(false);
+});
+
+test('should return false for duplicate in box', async () => {
+    const result = await validSudoku([
+        [5,3,4, 6,7,8, 9,1,2],
+        [6,7,2, 1,9,5, 3,4,8],
+        [1,9,4, 3,4,2, 5,6,7],
+        
+        [8,5,9, 7,6,1, 4,2,3],
+        [4,2,6, 8,5,3, 7,9,1],
+        [7,1,3, 9,2,4, 8,5,6],
+
+        [9,6,1, 5,3,7, 2,8,4],
+        [2,8,7, 4,1,9, 6,3,5],
+        [3,4,5, 2,8,6, 1,7,9]
+    ]);
+    expect(result).toBe(false);
+});
+
+test('should return true for no duplicate', async () => {
+    const result = await validSudoku([
+        [5,3,4, 6,7,8, 9,1,2],
+        [6,7,2, 1,9,5, 3,4,8],
+        [1,9,8, 3,4,2, 5,6,7],
+
+        [8,5,9, 7,6,1, 4,2,3],
+        [4,2,6, 8,5,3, 7,9,1],
+        [7,1,3, 9,2,4, 8,5,6],
+
+        [9,6,1, 5,3,7, 2,8,4],
+        [2,8,7, 4,1,9, 6,3,5],
+        [3,4,5, 2,8,6, 1,7,9]
+    ]);
+    expect(result).toBe(true);
+});
+
+/*
+Here the sum1 & sum2 will be equal but
+we can handle it with duplicates check
+*/
+
+test('edge case', async () => {
+    const result = await validSudoku([
+        [1,1,1, 1,1,1, 1,1,1],
+        [1,1,1, 1,1,1, 1,1,1],
+        [1,1,1, 1,1,1, 1,1,1],
+
+        [1,1,1, 1,1,1, 1,1,1],
+        [1,1,1, 1,1,1, 1,1,1],
+        [1,1,1, 1,1,1, 1,1,1],
+        
+        [1,1,1, 1,1,1, 1,1,1],
+        [1,1,1, 1,1,1, 1,1,1],
+        [1,1,1, 1,1,1, 1,1,1],
+        
+    ]);
+    expect(result).toBe(false);
+});
+

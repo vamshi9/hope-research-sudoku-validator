@@ -7,10 +7,20 @@ const sum = array => {
     }, 0);
 }
 
+//check range
+const checkRange = array => {
+    array.forEach(element => {
+        if(element <= 0 || element > 9){
+            throw err;
+        }
+    });
+    return true;
+}
+
 //check duplicates
 const checkDuplicates = sudoku => {
     sudoku._data.some(subarray => {
-        if (new Set(subarray).size != 9 || subarray.includes(0)) {
+        if (new Set(subarray).size != 9 || !checkRange(subarray)) {
             throw err;
         }
     });
@@ -43,15 +53,4 @@ const validSudoku = array => {
     }
 }
 
-
-console.log(validSudoku([
-    [4,5,9,7,2,6,3,1,8],
-    [1,3,8,4,5,9,2,6,7],
-    [7,6,2,3,1,8,4,9,5],
-    [2,8,4,9,7,3,6,5,1],
-    [6,1,3,8,4,5,9,7,2],
-    [9,7,5,2,6,1,8,4,3],
-    [3,2,6,1,9,7,5,8,4],
-    [5,4,1,6,8,2,7,3,9],
-    [8,9,7,5,3,4,1,2,6]
-]));
+module.exports = validSudoku;
